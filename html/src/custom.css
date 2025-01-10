@@ -13,10 +13,9 @@
 }
 
 
-body {
- 
-  Height: auto
-  
+#index {
+  Height: auto;
+  background-color: whitesmoke
 }
 
 .navbar {
