@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'BabyDoll';
-  src: url('/html/src/Fonts/BabyDoll.ttf') format('truetype');
+  src: url('./fonts/babydoll.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -191,6 +191,8 @@
   align-items: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds shadow to the text for better visibility */
 }
+
+
 
 /* ----------------------------------------------------------------------------------------------- */
 
