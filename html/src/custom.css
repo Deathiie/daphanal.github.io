@@ -1,0 +1,212 @@
+
+/* ----------------------------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'BabyDoll';
+  src: url('/html/src/Fonts/BabyDoll.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.d-none {
+  display: none !important;
+}
+
+
+body {
+ 
+  Height: auto
+  
+}
+
+.navbar {
+  height: 10vh;
+  z-index: 1000; /* Ensures the navbar stays on top of other content */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  font-size: 13px;
+  font-family: 'BabyDoll', sans-serif;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-brand img {
+ margin: 30px;
+  height: 35px; /* Adjust logo size */
+}
+
+.navbar .nav-link {
+  color: white; /* Set the color to white */
+  transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.navbar .nav-link:hover {
+  color: lightgray; /* Optional: Change color on hover for better user experience */
+}
+
+.resume-container {
+  display: none;
+}
+
+/* Ensure resume button is visible in expanded menu */
+.navbar-collapse .resume-button {
+  display: block;
+}
+
+@media (max-width: 991.98px) {
+
+  .navbar-toggler {
+    position: absolute;
+    right: 20px; /* Adjust this value as needed */
+    top: 15px;  /* Adjust this value as needed */
+    z-index: 1020; /* Ensure it's above other elements */
+  }
+  
+  .navbar {
+    position: relative; /* Ensure positioning context for the navbar-toggler */
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .navbar-collapse {
+    text-align: center; /* Center-align text in the collapsed menu */
+  }
+
+  .navbar-brand {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    width: 100%; /* Take full width of the navbar */
+  }
+}
+
+.btn {
+  font-size: 13px;
+  color: antiquewhite;
+} 
+
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+#section2 {
+  height: auto;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+/* Adjust only the image inside section 2 */
+#section2 .image {
+  z-index: 1000;
+  margin-top: -14%;
+  margin-left: -50px;
+  max-width: auto;          /* Limit the image's width */
+  max-height: 29vw;         /* Limit the image's height */
+  object-fit: contain;     /* Ensure the image keeps its aspect ratio */
+}
+
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+.section3 {
+  border: 1px dashed red; /* Debug border */
+  background-color: whitesmoke;
+  width: 100%;
+  min-height: 80vh; /* Adjustable height */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center; /* Ensures text is centered */
+}
+
+
+/* ----------------------------------------------------------------------------------------------- */
+
+.catalogue {
+  display: flex;
+  padding-top: 15vh;
+  background-color: sandybrown;
+  position: relative; /* Required for sticky behavior within the container */
+  border-radius: 50px; /* Adjust the value for the desired corner roundness */
+
+}
+
+.section-title {
+  height: auti;
+  width: 40vw;
+  top: 0; /* Keep it at the top of the container */
+  text-align: center;
+  font-size: 80pt;
+  z-index: 10; /* Ensure the text stays above other content */
+  /* Optional: Add padding or other styles to improve visibility */
+
+}
+
+.works {
+  position: sticky;
+  top: 0; /* Sticky to the top of the viewport */
+  z-index: 100; /* Ensure it stays above other content */
+  font-size: 80pt; /* Adjust size as needed */
+  text-align: center;
+  height: 60vh;
+  padding-top: 15vh;
+}
+
+.categories {
+  width: 60vw;
+  padding-bottom: 15vh;
+}
+
+.category {
+  height: 50vh;
+  background-size: 80%; /* Ensure the image covers the div */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  color: white; /* Make text visible on top of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds shadow to the text for better visibility */
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+.contacts {
+  border: 1px dashed red; /* Debug border */
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100vh; /* Adjustable height */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  text-align: center; /* Ensures text is centered */
+}
+
+
