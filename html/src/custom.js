@@ -1,5 +1,3 @@
-
-
 // HOVER JS
 // Create a custom cursor element
 const cursor = document.createElement('div');
@@ -64,148 +62,161 @@ videoElements.forEach((video) => {
 
 // Scroll Change Navbar Color
 window.addEventListener('scroll', function () {
-  var navbar = document.getElementById('navbar');
+    var navbar = document.getElementById('navbar');
 
-  // Check for catalogue section (index.html)
-  var catalogue = document.querySelector('.catalogue');
-  if (catalogue) {
-      var catalogueTop = catalogue.getBoundingClientRect().top;
-      if (catalogueTop <= 0) {
-          navbar.classList.add('navbar-hidden');
-      } else {
-          navbar.classList.remove('navbar-hidden');
-      }
-  }
+    // Check for catalogue section (index.html)
+    var catalogue = document.querySelector('.catalogue');
+    if (catalogue) {
+        var catalogueTop = catalogue.getBoundingClientRect().top;
+        if (catalogueTop <= 0) {
+            navbar.classList.add('navbar-hidden');
+        } else {
+            navbar.classList.remove('navbar-hidden');
+        }
+    }
 
-  // Check for portfolio section (work.html)
-  var portfolio = document.getElementById('portfolio');
-  if (portfolio) {
-      var portfolioTop = portfolio.getBoundingClientRect().top;
-      if (portfolioTop <= 0) {
-          navbar.classList.add('navbar-hidden');
-      } else {
-          navbar.classList.remove('navbar-hidden');
-      }
-  }
+    // Check for portfolio section (work.html)
+    var portfolio = document.getElementById('portfolio');
+    if (portfolio) {
+        var portfolioTop = portfolio.getBoundingClientRect().top;
+        if (portfolioTop <= 0) {
+            navbar.classList.add('navbar-hidden');
+        } else {
+            navbar.classList.remove('navbar-hidden');
+        }
+    }
 
-  // Change navbar color to yellow when scroll is past the second section
-  var section2 = document.getElementById('section2');
-  if (section2) {
-      var section2Top = section2.offsetTop;
-      if (window.scrollY > section2Top - 50) {
-          navbar.classList.add('bg-warning');
-          navbar.classList.remove('bg-transparent');
-      } else {
-          navbar.classList.remove('bg-warning');
-          navbar.classList.add('bg-transparent');
-      }
-  }
+    // Change navbar color to yellow when scroll is past the second section
+    var section2 = document.getElementById('section2');
+    if (section2) {
+        var section2Top = section2.offsetTop;
+        if (window.scrollY > section2Top - 50) {
+            navbar.classList.add('bg-warning');
+            navbar.classList.remove('bg-transparent');
+        } else {
+            navbar.classList.remove('bg-warning');
+            navbar.classList.add('bg-transparent');
+        }
+    }
 });
 
 
-
-
-
-// NAVBAR JS
-
 //-------------------------------------------------------------------------------------
 
-// Filter Tag JS
+
+// Filter Tag JS with LocalStorage
+// Annotated change: Added localStorage functionality to remember selected tags
+// and retrieve them when the page is reloaded or revisited.
 document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.portfolio-item');
-  let activeFilters = [];
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+    let activeFilters = [];
 
-  // Check URL for tag query parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialTag = urlParams.get('tag');
+    // Check URL for initial tag query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTag = urlParams.get('tag');
 
-  if (initialTag) {
-      // Simulate a click on the corresponding filter button
-      const initialButton = Array.from(filterButtons).find(button => button.getAttribute('data-tag') === initialTag);
-      if (initialButton) {
-          initialButton.classList.add('active');
-          activeFilters.push(initialTag);
-          filterGallery(activeFilters);
-      }
-  }
+    // Load previously selected tags from localStorage
+    const savedFilters = JSON.parse(localStorage.getItem('selectedTags'));
+    if (savedFilters && savedFilters.length > 0) {
+        activeFilters = savedFilters;
+        filterButtons.forEach(button => {
+            const tag = button.getAttribute('data-tag');
+            if (activeFilters.includes(tag)) {
+                button.classList.add('active');
+            }
+        });
+        filterGallery(activeFilters); // Annotated change: Apply saved filters on page load
+    } else if (initialTag) {
+        // Simulate a click on the corresponding filter button if a tag is in the URL
+        const initialButton = Array.from(filterButtons).find(button => button.getAttribute('data-tag') === initialTag);
+        if (initialButton) {
+            initialButton.classList.add('active');
+            activeFilters.push(initialTag);
+            filterGallery(activeFilters);
+        }
+    }
 
-  filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          const tag = button.getAttribute('data-tag');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tag = button.getAttribute('data-tag');
 
-          // Toggle the active state of the button and update activeFilters
-          if (button.classList.contains('active')) {
-              button.classList.remove('active');
-              activeFilters = activeFilters.filter(filter => filter !== tag);
-          } else {
-              button.classList.add('active');
-              activeFilters.push(tag);
-          }
+            // Toggle the active state of the button and update activeFilters
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                activeFilters = activeFilters.filter(filter => filter !== tag);
+            } else {
+                button.classList.add('active');
+                activeFilters.push(tag);
+            }
 
-          // Update the gallery based on active filters
-          filterGallery(activeFilters);
-      });
-  });
+            // Save the updated filters to localStorage
+            localStorage.setItem('selectedTags', JSON.stringify(activeFilters)); // Annotated change: Save current filters
 
-  function filterGallery(filters) {
-      items.forEach(item => {
-          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/); // Split by space or comma
-          const matches = filters.some(filter => itemTags.includes(filter));
+            // Update the gallery based on active filters
+            filterGallery(activeFilters);
+        });
+    });
 
-          // Show the item if it matches any active filter or if no filters are selected
-          if (filters.length === 0 || matches) {
-              item.style.display = 'block';
-          } else {
-              item.style.display = 'none';
-          }
-      });
-  }
+    function filterGallery(filters) {
+        items.forEach(item => {
+            const itemTags = item.getAttribute('data-tag').split(/[\s,]+/); // Split by space or comma
+            const matches = filters.some(filter => itemTags.includes(filter));
+
+            // Show the item if it matches any active filter or if no filters are selected
+            if (filters.length === 0 || matches) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
 });
 
+
 //-------------------------------------------------------------------------------------
+
 
 // Contact Number JS
-
 function copyPhone() {
-  const phoneNumber = '+6597695765'; // Your phone number here
+    const phoneNumber = '+6597695765'; // Your phone number here
 
-  // Copy to clipboard
-  navigator.clipboard.writeText(phoneNumber)
-      .then(() => {
-          alert('Phone number copied to clipboard!');
-      })
-      .catch(err => {
-          console.error('Failed to copy: ', err);
-      });
+    // Copy to clipboard
+    navigator.clipboard.writeText(phoneNumber)
+        .then(() => {
+            alert('Phone number copied to clipboard!');
+        })
+        .catch(err => {
+            console.error('Failed to copy: ', err);
+        });
 
-  // Open phone dialer on mobile
-  if (/Mobi|Android/i.test(navigator.userAgent)) {
-      window.location.href = `tel:${phoneNumber}`;
-  }
+    // Open phone dialer on mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        window.location.href = `tel:${phoneNumber}`;
+    }
 }
 
+
 // EMAIL JS
-
 function copyOrOpenEmail() {
-  const email = "Daphanal.s@gmail.com";
+    const email = "Daphanal.s@gmail.com";
 
-  // Copy email to clipboard
-  navigator.clipboard.writeText(email).then(() => {
-    alert("Email address copied to clipboard!");
+    // Copy email to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+        alert("Email address copied to clipboard!");
 
-    // Open the default email app after copying
-    window.location.href = `mailto:${email}`;
-  }).catch(err => {
-    console.error("Failed to copy email: ", err);
-  });
+        // Open the default email app after copying
+        window.location.href = `mailto:${email}`;
+    }).catch(err => {
+        console.error("Failed to copy email: ", err);
+    });
 }
 
 
 //-------------------------------------------------------------------------------------
 
-// NEW TAB JS
 
+// NEW TAB JS
 function openNewTab(url) {
-  window.open(url, '_blank'); // Opens the link in a new tab
+    window.open(url, '_blank'); // Opens the link in a new tab
 }
