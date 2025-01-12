@@ -38,11 +38,11 @@ hoverElements.forEach((element) => {
 });
 
 // Add event listeners for video elements to change cursor color to white
-const videoElements = document.querySelectorAll('video');
+const videoElements = document.querySelectorAll('.invert-cursor');
 
 videoElements.forEach((video) => {
     video.addEventListener('mouseenter', () => {
-        cursor.style.backgroundColor = '#FFFFFF';      // Fill cursor with white
+        cursor.style.backgroundColor = 'transparent';      // Fill cursor with white
         cursor.style.borderColor = '#FFFFFF';          // Change border to white
         cursorDot.style.backgroundColor = '#FFFFFF';   // Change dot color to white
     });
@@ -116,23 +116,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const initialTag = urlParams.get('tag');
 
-    // Load previously selected tags from localStorage
-    const savedFilters = JSON.parse(localStorage.getItem('selectedTags'));
-    if (savedFilters && savedFilters.length > 0) {
-        activeFilters = savedFilters;
-        filterButtons.forEach(button => {
-            const tag = button.getAttribute('data-tag');
-            if (activeFilters.includes(tag)) {
-                button.classList.add('active');
-            }
-        });
-        filterGallery(activeFilters); // Annotated change: Apply saved filters on page load
-    } else if (initialTag) {
-        // Simulate a click on the corresponding filter button if a tag is in the URL
+    if (initialTag) {
+        // Clear localStorage filters if a tag is provided via URL
+        localStorage.removeItem('selectedTags');
+
+        // Remove 'active' class from all buttons
+        filterButtons.forEach(button => button.classList.remove('active'));
+
+        // Simulate a click on the corresponding filter button
         const initialButton = Array.from(filterButtons).find(button => button.getAttribute('data-tag') === initialTag);
         if (initialButton) {
             initialButton.classList.add('active');
             activeFilters.push(initialTag);
+            filterGallery(activeFilters);
+        }
+    } else {
+        // Load previously selected tags from localStorage if no URL tag is present
+        const savedFilters = JSON.parse(localStorage.getItem('selectedTags'));
+        if (savedFilters && savedFilters.length > 0) {
+            activeFilters = savedFilters;
+            filterButtons.forEach(button => {
+                const tag = button.getAttribute('data-tag');
+                if (activeFilters.includes(tag)) {
+                    button.classList.add('active');
+                }
+            });
             filterGallery(activeFilters);
         }
     }
@@ -151,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Save the updated filters to localStorage
-            localStorage.setItem('selectedTags', JSON.stringify(activeFilters)); // Annotated change: Save current filters
+            localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
 
             // Update the gallery based on active filters
             filterGallery(activeFilters);

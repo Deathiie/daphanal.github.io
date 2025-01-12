@@ -20,6 +20,8 @@
 
  /* Copy & Paste Behaviours */
 
+  /* [ .invert-cursor ] to make cursor white */
+
 .reset-btn {
   border: none;              /* Removes default border */
   background: none;          /* Removes default background */
