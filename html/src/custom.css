@@ -112,7 +112,8 @@ body {
 }
 
 .navbar .nav-link:hover {
-  color: lightgray; /* Optional: Change color on hover for better user experience */
+  color: rgba(255, 255, 255, 0.5); /* White with 70% opacity */
+  transition: color 0.3s ease; /* Smooth transition */
 }
 
 .resume-container {
@@ -297,67 +298,68 @@ body {
 
 /* ----------------------------------------------------------------------------------------------- */
 
-
 .portfolio-gallery {
   display: flex;
-  padding-top: 5vh; /* Adds padding around the gallery */
+  padding-top: 5vh;
   width: 100vw;
 }
 
-.portfolio {
-  padding: 10px; /* Adds padding inside each item */
-}
 
 .portfolio-items {
-   /* Adjusts the right side of the first item */
-  height: 5000px;
-  width: 70vw;
-}
 
-.portfolio-items {
+  position: relative;
   display: flex;
-  flex-direction: row; /* Ensures items align horizontally */
-  justify-content: center; /* Centers items horizontally */
-  align-items: flex-start; /* Aligns items to the top (no vertical centering) */
-  flex-wrap: wrap; /* Allows items to wrap to the next row */
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 20px;
-  height: auto; /* Adjust height based on content */
   width: 70vw;
-  margin: 0 auto; /* Centers the entire portfolio-items container within its parent */
+  margin: 0 auto;
+}
+
+/* Full-row item styling */
+.portfolio-item.full-row {
+  width: 85%;
+  height: 70vh;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.full-row-img {
+  width: 100%; /* Full width of the parent container */
+  height: 80%; /* 80% height of the parent container */
+  border-radius: 30px; /* Keeps the rounded corners */
+  overflow: hidden; /* Ensures content stays within the rounded corners */
+}
+
+.full-row-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the container without distortion */
+  border-radius: inherit; /* Keeps the same border radius as the container */
+}
+
+/* Full-row text content */
+.full-row-text {
+  width: 90%;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .portfolio-item {
   height: 75vh;
   width: 27vw;
-  margin: 0 1vw 0 1vw;
+  margin: 0 1vw;
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-item.full-row {
-  width: 85%; /* Full row item */
-  height: 70vh;
-  margin: 1vw;
-  border-radius: 30px;
-}
-
-.portfolio-content img {
-  width: auto;
-  height: 100px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.portfolio-content h4 {
-  margin: 10px 0;
-  font-size: 1.25rem;
-}
-
-.portfolio-content p {
-  font-size: 1rem;
-  color: #666;
-}
 
 
 .filters {
@@ -470,19 +472,19 @@ body {
   width: 100%;
 }
 
-.footer .contact-go {
-  margin-left: auto;
-  display: block; /* Ensure it's treated as a block-level element */
-  height: 8px;
-  width: auto; /* Adjust width if needed */
-}
-
-
 .footer .social-item {
   display: flex;
   justify-content: center; /* Centers items vertically */
   align-items: center; /* Centers items horizontally */
   height: 10vh; /* Full viewport height for vertical centering */
+}
+
+
+.footer .contact-go {
+  margin-left: auto;
+  display: block; /* Ensure it's treated as a block-level element */
+  height: auto;
+  width: 25px; /* Adjust width if needed */
 }
 
 /* Shared CSS for email and hp icons */

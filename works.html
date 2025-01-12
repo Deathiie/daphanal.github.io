@@ -27,7 +27,7 @@
     <div class="container-fluid">
 
       <!-- Logo -->
-      <a class="navbar-brand" href="index.html">
+      <a class="hover navbar-brand" href="index.html">
         <img src="html/src/imgs/icon.png" alt="Logo">
       </a>
   
@@ -40,14 +40,17 @@
       <!-- Navbar Collapse (contains mobile menu and resume button) -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item mx-3">
-            <a class="nav-link" href="works.html?tag=Animation">Animation</a>
-          </li>
-          <li class="nav-item mx-3">
+          <li class="hover nav-item mx-3">
             <a class="nav-link" href="works.html?tag=Game">Game</a>
           </li>
-          <li class="nav-item mx-3">
+          <li class="hover nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=Animation">Animation</a>
+          </li>
+          <li class="hover nav-item mx-3">
             <a class="nav-link" href="works.html?tag=Graphic">Graphic Design</a>
+          </li>
+          <li class="hover nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=3D">3D</a>
           </li>
           <li class="nav-item mx-3">
           </li>
@@ -71,13 +74,13 @@
   <!--- ↓ SECTION 1 | SHOWREEL ↓ --->
 
   <div class="invert-cursor" style="height: 90vh; background-color: lightgrey; overflow: hidden; position: relative; border-radius: 0 0 30px 30px;">
-    <!-- Embed video -->
-    <video width="auto" height="auto%" autoplay muted loop>
-      <source src="html/src/mov/MAIN_THATSUCKS_Final V4(Updated End Card).mp4" type="video/mp4">
-      Your browser does not support the video tag.
-
-    </video>
-  
+    <!-- Embed YouTube Video -->
+    <iframe width="100%" height="100%" 
+            src="https://www.youtube.com/embed/ShIEj9x5wYE?autoplay=1&mute=1&loop=1&playlist=ShIEj9x5wYE" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
   </div>
 
   <!--- ↑ SECTION 1 | END ↑ --->
@@ -112,9 +115,13 @@
 
 <div class="portfolio-item full-row" data-tag="Game" onclick="openNewTab('https://www.behance.net/gallery/216646527/TEST')">
   <div class="portfolio-content">
-    <img src="html/src/gifs/ezgif-2-614d5dfac7.gif" alt="Project 1" class="img-fluid">
+    <div class="full-row-img">
+      <img src="html/src/gifs/ezgif-2-614d5dfac7.gif" alt="Project 1" class="img-fluid">
+    </div>
+    <div class="full-row-text">
     <h4>Texture Design</h4>
     <p> Publication made for class blah blah hbdwuioedhpnwnoe ednwdnwqlkedmed </p>
+  </div>
   </div>
 </div>
 
@@ -402,13 +409,14 @@
       <div class="works">WORKS:</div>
     </div>
     <div class="categories">
-      <div class="category" style="background-image: url('html/src/imgs/anim-card.png');"></div>
-      <div class="category" style="background-image: url('html/src/imgs/anim-card.png');"></div>
-      <div class="category" style="background-image: url('html/src/imgs/anim-card.png');"></div>
-      <div class="category" style="background-image: url('html/src/imgs/anim-card.png');"></div>
+      <a href="works.html?tag=Game" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=Animation" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=Graphic" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=3D" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
     </div>
   </section>
   </section>
+  
   
   <!--- ↑ SECTION 4 | END ↑ --->
 
@@ -424,11 +432,14 @@
         <div class="footer-left">
 
           <!-- Hero Image -->
-
-          <div class="footer-logo">
-            <img src="html/src/imgs/Logo_Rendered.png" alt="Contacts" class="contacts-gif">
+        <a href="index.html">
+          <div class="hover footer-logo">
+              <img src="html/src/imgs/Logo_Rendered.png" alt="Contacts" class="contacts-gif">
           </div>
+        </a>
+
         </div>
+
         <div class="footer-right">
           <div class="footer-contacts">
 
@@ -452,7 +463,17 @@
 
             <div class="dotted-separator"></div>
 
-               <!-- Social Medias -->
+       <!-- Resume -->
+            
+       <a href="html/src/2025 resume.pdf" target="_blank" class="reset-btn hover contact-item">
+        <img src="html/src/imgs/view.png" alt="Resume" class="icon-contact">
+        [View Resume]
+        <img src="html/src/imgs/Download.png" alt="Go" class="contact-go">
+      </a>
+      
+      <div class="dotted-separator"></div>
+
+         <!-- Social Medias -->
                 
             <div class="social-item">
 
