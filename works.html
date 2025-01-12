@@ -495,6 +495,63 @@
   <!-- Custom JS -->
   <script src="html/src/custom.js"></script>
 
+  <script>
+    // Initialize an empty array for selected tags
+    let selectedTags = JSON.parse(localStorage.getItem('selectedTags')) || [];
+  
+    const filterButtons = document.querySelectorAll('.filter-btn');
+  
+    // Event listener for each button
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tag = button.getAttribute('data-tag');
+  
+        // Toggle tag selection
+        if (selectedTags.includes(tag)) {
+          selectedTags = selectedTags.filter(t => t !== tag); // Remove tag if already selected
+          button.classList.remove('active');
+        } else {
+          selectedTags.push(tag); // Add tag if not selected
+          button.classList.add('active');
+        }
+  
+        // Save the updated tags to localStorage
+        localStorage.setItem('selectedTags', JSON.stringify(selectedTags));
+  
+        // Apply the filter based on selected tags
+        applyFilter();
+      });
+    });
+  
+    // Function to apply filter based on selected tags
+    function applyFilter() {
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+      portfolioItems.forEach(item => {
+        const itemTags = item.getAttribute('data-tag').split(' '); // Assume multiple tags are space-separated
+        const isVisible = selectedTags.some(tag => itemTags.includes(tag));
+  
+        item.style.display = isVisible ? 'block' : 'none';
+      });
+    }
+  
+    // On page load, restore the selected tags and apply the filter
+    window.addEventListener('load', () => {
+      if (selectedTags.length > 0) {
+        applyFilter();
+  
+        // Highlight the active buttons
+        filterButtons.forEach(button => {
+          const tag = button.getAttribute('data-tag');
+          if (selectedTags.includes(tag)) {
+            button.classList.add('active');
+          }
+        });
+      }
+    });
+  </script>
+  
+
   <!-- Bootstrap JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
