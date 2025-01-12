@@ -82,56 +82,21 @@ window.addEventListener('scroll', function () {
 
 //-------------------------------------------------------------------------------------
 
-// Filter Tag JS
+// Store the last visited link on every page load
 document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.portfolio-item');
-    let activeFilters = [];
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialTag = urlParams.get('tag');
-
-    if (initialTag) {
-        activeFilters = initialTag.split(','); // Handle multiple tags from URL
-        activeFilters.forEach(tag => {
-            const button = Array.from(filterButtons).find(btn => btn.getAttribute('data-tag') === tag);
-            if (button) button.classList.add('active');
-        });
-        filterGallery(activeFilters);
+    const currentUrl = window.location.href;
+    if (currentUrl.startsWith('https://deathiie.github.io/daphanal.github.io/')) {
+        localStorage.setItem('lastVisitedLink', currentUrl);
     }
+});
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tag = button.getAttribute('data-tag');
-
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-                activeFilters = activeFilters.filter(filter => filter !== tag);
-            } else {
-                button.classList.add('active');
-                activeFilters.push(tag);
-            }
-
-            // Update the URL to reflect the selected tags
-            const queryParams = new URLSearchParams();
-            if (activeFilters.length > 0) {
-                queryParams.set('tag', activeFilters.join(','));
-            }
-            history.replaceState(null, '', `${window.location.pathname}?${queryParams.toString()}`);
-
-            // Save active filters in local storage
-            localStorage.setItem('lastSelectedTags', JSON.stringify(activeFilters));
-
-            filterGallery(activeFilters);
-        });
-    });
-
-    function filterGallery(filters) {
-        items.forEach(item => {
-            const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
-            const matches = filters.some(filter => itemTags.includes(filter));
-            item.style.display = filters.length === 0 || matches ? 'block' : 'none';
-        });
+// Redirect to the last visited link if available
+document.addEventListener('DOMContentLoaded', () => {
+    const lastVisitedLink = localStorage.getItem('lastVisitedLink');
+    if (lastVisitedLink) {
+        window.location.href = lastVisitedLink;
+    } else {
+        window.location.href = 'https://deathiie.github.io/daphanal.github.io/';
     }
 });
 
@@ -166,19 +131,3 @@ function copyOrOpenEmail() {
 function openNewTab(url) {
     window.open(url, '_blank');
 }
-
-//-------------------------------------------------------------------------------------
-
-// Last-selected JS (for redirect.html)
-document.addEventListener('DOMContentLoaded', () => {
-    const lastSelectedTags = localStorage.getItem('lastSelectedTags');
-    
-    if (lastSelectedTags) {
-        const tags = JSON.parse(lastSelectedTags).join(',');
-        // Redirect to works.html with the saved tags in the URL
-        window.location.href = `works.html?tag=${tags}`;
-    } else {
-        // Redirect to works.html if no tags are saved
-        window.location.href = 'works.html';
-    }
-});
