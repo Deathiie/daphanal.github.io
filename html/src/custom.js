@@ -1,4 +1,4 @@
-// HOVER JS
+// HOVER JS: Creates a custom cursor and updates its position on mouse movement
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
 
@@ -8,11 +8,19 @@ cursor.appendChild(cursorDot);
 
 document.body.appendChild(cursor);
 
+// Throttle mousemove events to improve performance
+let lastMoveTime = 0;
+
 document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
+    const now = Date.now();
+    if (now - lastMoveTime > 16) { // Update every ~16ms (~60fps)
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+        lastMoveTime = now;
+    }
 });
 
+// Handles hover effects for elements with the 'hover' class
 const hoverElements = document.querySelectorAll('.hover');
 
 hoverElements.forEach((element) => {
@@ -33,6 +41,7 @@ hoverElements.forEach((element) => {
     });
 });
 
+// Handles cursor color change when hovering over video elements
 const videoElements = document.querySelectorAll('video');
 
 videoElements.forEach((video) => {
@@ -51,11 +60,12 @@ videoElements.forEach((video) => {
 
 //-------------------------------------------------------------------------------------
 
-// NAVBAR JS
+// NAVBAR JS: Changes navbar visibility and background color based on scroll position
 window.addEventListener('scroll', function () {
     var navbar = document.getElementById('navbar');
     var catalogue = document.querySelector('.catalogue');
 
+    // Hide navbar if the catalogue section is scrolled past
     if (catalogue) {
         var catalogueTop = catalogue.getBoundingClientRect().top;
         navbar.classList.toggle('navbar-hidden', catalogueTop <= 0);
@@ -67,6 +77,7 @@ window.addEventListener('scroll', function () {
         navbar.classList.toggle('navbar-hidden', portfolioTop <= 0);
     }
 
+    // Change navbar color when scrolled past section2
     var section2 = document.getElementById('section2');
     if (section2) {
         var section2Top = section2.offsetTop;
@@ -82,39 +93,42 @@ window.addEventListener('scroll', function () {
 
 //-------------------------------------------------------------------------------------
 
-// Store the last visited link on every page load
+// LAST VISITED LINK JS: Stores and redirects to the last visited link
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentUrl = window.location.href;
+    const lastVisitedLink = localStorage.getItem('lastVisitedLink');
+
+    // Store the current URL as the last visited link if it's part of your domain
     if (currentUrl.startsWith('https://deathiie.github.io/daphanal.github.io/')) {
         localStorage.setItem('lastVisitedLink', currentUrl);
     }
-});
 
-// Redirect to the last visited link if available
-document.addEventListener('DOMContentLoaded', () => {
-    const lastVisitedLink = localStorage.getItem('lastVisitedLink');
-    if (lastVisitedLink) {
-        window.location.href = lastVisitedLink;
-    } else {
-        window.location.href = 'https://deathiie.github.io/daphanal.github.io/';
+    // Redirect to the last visited link if we're on the main page and a link exists
+    if (window.location.pathname === '/' && lastVisitedLink) {
+        const goToLastPage = confirm("Do you want to go back to your last visited page?");
+        if (goToLastPage) {
+            window.location.href = lastVisitedLink;
+        }
     }
 });
 
 //-------------------------------------------------------------------------------------
 
-// Contact Number JS
+// CONTACT NUMBER JS: Copies the phone number to clipboard and opens dialer on mobile
 function copyPhone() {
     const phoneNumber = '+6597695765';
     navigator.clipboard.writeText(phoneNumber)
         .then(() => alert('Phone number copied to clipboard!'))
         .catch(err => console.error('Failed to copy: ', err));
 
+    // Open phone dialer on mobile devices
     if (/Mobi|Android/i.test(navigator.userAgent)) {
         window.location.href = `tel:${phoneNumber}`;
     }
 }
 
-// EMAIL JS
+// EMAIL JS: Copies the email address to clipboard and opens the default email app
 function copyOrOpenEmail() {
     const email = "Daphanal.s@gmail.com";
     navigator.clipboard.writeText(email)
@@ -127,7 +141,7 @@ function copyOrOpenEmail() {
 
 //-------------------------------------------------------------------------------------
 
-// NEW TAB JS
+// NEW TAB JS: Opens a given URL in a new tab
 function openNewTab(url) {
     window.open(url, '_blank');
 }
