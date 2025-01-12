@@ -169,17 +169,16 @@ function openNewTab(url) {
 
 //-------------------------------------------------------------------------------------
 
-// Last-selected JS
+// Last-selected JS (for redirect.html)
 document.addEventListener('DOMContentLoaded', () => {
     const lastSelectedTags = localStorage.getItem('lastSelectedTags');
     
     if (lastSelectedTags) {
-        const tags = JSON.parse(lastSelectedTags);
-        const queryParams = new URLSearchParams();
-        if (tags.length > 0) {
-            queryParams.set('tag', tags.join(','));
-        }
-        history.replaceState(null, '', `${window.location.pathname}?${queryParams.toString()}`);
-        filterGallery(tags);
+        const tags = JSON.parse(lastSelectedTags).join(',');
+        // Redirect to works.html with the saved tags in the URL
+        window.location.href = `works.html?tag=${tags}`;
+    } else {
+        // Redirect to works.html if no tags are saved
+        window.location.href = 'works.html';
     }
 });
