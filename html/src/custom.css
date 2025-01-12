@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Autography';
+  src: url('./fonts/autography.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .d-none {
   display: none !important;
 }
@@ -15,7 +22,12 @@
 
 #index {
   Height: auto;
-  background-color: whitesmoke
+  background-color: whitesmoke;
+}
+
+#works {
+  Height: auto;
+  background-color: whitesmoke;
 }
 
 .navbar {
@@ -119,7 +131,7 @@
 #section2 .image {
   z-index: 1000;
   margin-top: -14%;
-  margin-left: -50px;
+  margin-left: -30px;
   max-width: auto;          /* Limit the image's width */
   max-height: 29vw;         /* Limit the image's height */
   object-fit: contain;     /* Ensure the image keeps its aspect ratio */
@@ -145,24 +157,25 @@
 
 /* ----------------------------------------------------------------------------------------------- */
 
+
 .catalogue {
   display: flex;
   padding-top: 15vh;
   background-color: sandybrown;
   position: relative; /* Required for sticky behavior within the container */
   border-radius: 50px; /* Adjust the value for the desired corner roundness */
+  flex-direction: row;
 
 }
 
 .section-title {
-  height: auti;
+  height: auto;
   width: 40vw;
   top: 0; /* Keep it at the top of the container */
   text-align: center;
   font-size: 80pt;
   z-index: 10; /* Ensure the text stays above other content */
   /* Optional: Add padding or other styles to improve visibility */
-
 }
 
 .works {
@@ -170,9 +183,11 @@
   top: 0; /* Sticky to the top of the viewport */
   z-index: 100; /* Ensure it stays above other content */
   font-size: 80pt; /* Adjust size as needed */
+  font-family: 'BabyDoll', sans-serif;
   text-align: center;
-  height: 60vh;
-  padding-top: 15vh;
+  height: 68vh;
+  padding-top: 16vh;
+  padding-left: 50px;
 }
 
 .categories {
@@ -181,7 +196,7 @@
 }
 
 .category {
-  height: 50vh;
+  height: 25vw;
   background-size: 80%; /* Ensure the image covers the div */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -192,22 +207,268 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds shadow to the text for better visibility */
 }
 
+@media (max-width: 991.98px) {
+  .catalogue {
+    flex-direction: column; /* Stack items vertically */
+    padding-top: 5vh;
+  }
+
+  .section-title {
+    width: 100%;
+    font-size: 40pt; /* Reduce font size for mobile */
+  }
+
+  .works {
+    height: auto; /* Adjust height for better fit */
+    padding-top: 5vh;
+    font-size: 50pt; /* Smaller font size for mobile */
+    padding: 0px;
+  }
+
+  .categories {
+    width: 100%;
+    padding-bottom: 10vh;
+  }
+
+  .category {
+    height: 50vw; /* Make categories larger for better touch interaction */
+  }
+}
 
 
 /* ----------------------------------------------------------------------------------------------- */
 
 
-.contacts {
-  border: 1px dashed red; /* Debug border */
-  background-color: whitesmoke;
-  width: 100%;
-  height: 100vh; /* Adjustable height */
-  padding: 20px;
-  box-sizing: border-box;
+.portfolio-gallery {
   display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
-  text-align: center; /* Ensures text is centered */
+  padding-top: 5vh; /* Adds padding around the gallery */
+  width: 100vw;
+}
+
+.portfolio {
+  padding: 10px; /* Adds padding inside each item */
+}
+
+.portfolio-items {
+   /* Adjusts the right side of the first item */
+  height: 5000px;
+  width: 70vw;
+}
+
+.portfolio-items {
+  display: flex;
+  flex-direction: row; /* Ensures items align horizontally */
+  justify-content: center; /* Centers items horizontally */
+  align-items: flex-start; /* Aligns items to the top (no vertical centering) */
+  flex-wrap: wrap; /* Allows items to wrap to the next row */
+  gap: 20px;
+  height: auto; /* Adjust height based on content */
+  width: 70vw;
+  margin: 0 auto; /* Centers the entire portfolio-items container within its parent */
+}
+
+.portfolio-item {
+  height: 75vh;
+  width: 27vw;
+  margin: 0 1vw 0 1vw;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item.full-row {
+  width: 85%; /* Full row item */
+  height: 70vh;
+  margin: 1vw;
+  border-radius: 30px;
+}
+
+.portfolio-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.portfolio-content h4 {
+  margin: 10px 0;
+  font-size: 1.25rem;
+}
+
+.portfolio-content p {
+  font-size: 1rem;
+  color: #666;
 }
 
 
+.filters {
+  margin-left: 10px; /* Adjusts the left side of the second item */
+  height: 90vh;
+  width: 30vw;
+  background-color: #FFE05F;
+  position: sticky;
+  top: 5vh;
+  border-radius: 30px; /* Adds rounded corners */
+  margin-right: 50px;
+  padding: 5%;
+
+  font-family: 'BabyDoll', sans-serif;
+  
+  display: flex;             /* Enables Flexbox */
+  flex-direction: column;    /* Arranges children vertically */
+  align-items: center;       /* Centers children horizontally */
+  justify-content: center;   /* Optional: centers children vertically */
+  gap: 20px;                 /* Adds spacing between children */
+}
+
+.filters-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.filter-buttons-group {
+  margin-bottom: 5px; /* Adds space between button groups */
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;       /* Allows buttons to wrap onto new rows */
+  justify-content: center; /* Centers buttons horizontally */
+  gap: 15px 20px;        /* Adds 15px gap between rows and 20px gap between columns */
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+/* Footer container */
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: whitesmoke;
+  height: 100vh;
+  font-family: 'BabyDoll', sans-serif;
+}
+
+/* Top section of the footer */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+/* Left section of the footer */
+.footer-left {
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right section of the footer */
+.footer-right {
+  width:52%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  padding-top: 10vh;
+  color: #212653;
+}
+
+/* Footer logo container */
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Footer logo image */
+.footer-logo img {
+  max-width: 65%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* Centering the entire contacts section */
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh; /* Adjust gap as needed */
+}
+
+.footer .contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing */
+  padding-left: 3vh;
+  width: 100%;
+}
+
+.footer .contact-go {
+  margin-left: auto;
+  display: block; /* Ensure it's treated as a block-level element */
+  height: 8px;
+  width: auto; /* Adjust width if needed */
+}
+
+.footer .social-item {
+  display: flex;
+  justify-content: center; /* Centers items vertically */
+  align-items: center; /* Centers items horizontally */
+  height: 10vh; /* Full viewport height for vertical centering */
+}
+
+/* Shared CSS for email and hp icons */
+.icon-contact {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
+
+/* Shared CSS for social icons */
+.icon-social {
+  width: auto;
+  height: 4vh;
+  margin-right: 5px;
+}
+
+/* Specific CSS for "The making of" icon */
+.icon-making {
+  width: auto;
+  height: 3vh;
+  margin-left: 5px;
+}
+
+.dotted-separator {
+  width: 45vw;
+  height: 5px; /* Adjust to control the size of the dots */
+  margin: 10px 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="2" fill="black"/></svg>');
+  background-repeat: repeat-x;
+  background-size: 5px 5px; /* Adjust dot spacing */
+}
+
+/* Bottom section of the footer */
+.footer-bottom {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.footer-bottom-item {
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  color: #212653;
+  border-radius: 8px;
+}
+
+#autography-font {
+  font-family: 'Autography', cursive; /* Use 'cursive' as a fallback */
+  font-size: 25px;
+  padding-right: 0.5vw;
+}

@@ -2,82 +2,183 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8"> <!-- It's best to place this at the top for character encoding -->
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
+  <title>Works</title>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="html/src/custom.css">
 
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-
-      
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 
-<body id="index">
+<!------------------------------------------------------------------------------------------------------------->
 
-      <!-- NAVBAR -->
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">My Website</a>
-          <button 
-            class="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="Animation.html">Arcade</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Games.html">Theatre</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Graphic.html">Graphic Design</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="3D.html">3D Production</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
 
-    
-    <!--- ↓ SECTION-01 | WELCOME ↓ --->
-    
-    <div id="menu" class="container-fluid opening">
-        <div class="row section">
-           <div class="col-3 "></div>
-            <div class="col-6 opening"> 
-        
-                
-            </div>
-            <div class="col-3 "></div>
-        </div>
+
+<body id="works">
+
+   <!--- ↓ NAVBAR | START ↓ --->
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="navbar">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="html/src/imgs/icon.png" alt="Logo">
+      </a>
+  
+      <!-- Navbar Toggler (replace default hamburger icon with custom PNG) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="src/imgs/hamburger-icon.png" alt="Menu" style="width: 30px; height: auto;">
+      </button>
+  
+      <!-- Navbar Collapse (contains mobile menu and resume button) -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=Animation">Animation</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=Game">Game</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=Graphic">Graphic Design</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="works.html?tag=3D">3D</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-light resume-button d-none d-lg-block" type="button">Resume</button>
+        <!-- Resume Button (inside expanded menu for mobile view) -->
+        <button class="btn btn-outline-light resume-button d-lg-none mt-3 mx-auto" type="button">Resume</button>
+      </div>
+
     </div>
-    
-    <!--- ↑ SECTION-01 | WELCOME ↑ --->
+  </nav>
+  
+  <!--- ↑ NAVBAR | END ↑ --->
+
+
     
 
+<!------------------------------------------------------------------------------------------------------------->
+
+
+  <!--- ↓ SECTION 1 | SHOWREEL ↓ --->
+
+  <div style="height: 90vh; background-color: lightgrey; overflow: hidden; position: relative; border-radius: 0 0 30px 30px;">
+    <!-- Embed video -->
+    <video width="auto" height="auto%" autoplay muted loop>
+      <source src="html/src/mov/MAIN_THATSUCKS_Final V4(Updated End Card).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!--- ↑ SECTION 1 | END ↑ --->
+
+
+<!------------------------------------------------------------------------------------------------------------->
+
+    
     <div class="container-fluid">
         <div class="row">
         <div class="col-6 transition"></div>
         </div>
     </div>
     
-    <!--- ↓ SECTION-02 | GALLERY ↓ --->
+
+<!------------------------------------------------------------------------------------------------------------->
+
+   
+<!-- ↓ SECTION-02 | PORTFOLIO GALLERY ↓ -->
+<section class="portfolio-gallery" id="portfolio">
+
+  <!-- Portfolio Items Container -->
+  <div class="portfolio portfolio-items">
+
+    <!-- TEMPLATE 1: Side by Side -->
+    <div class="portfolio-item">
+      <div class="portfolio-content">
+        <img src="image1.jpg" alt="Project 1" class="img-fluid">
+        <h4>Project 1</h4>
+        <p>Description of Project 1</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <div class="portfolio-content">
+        <img src="image2.jpg" alt="Project 2" class="img-fluid">
+        <h4>Project 2</h4>
+        <p>Description of Project 2</p>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 2: Full Row -->
+    <div class="portfolio-item full-row">
+      <div class="portfolio-content">
+        <img src="image3.jpg" alt="Project 3" class="img-fluid">
+        <h4>Project 3</h4>
+        <p>Description of Project 3</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Portfolio Filters -->
+  <div class="portfolio filters">
+    
+    <!-- Gallery Title -->
+    <div class="filters-title">Gallery</div>
+
+    <!-- Filter Buttons Group 1 -->
+    <div class="filter-buttons-group">
+      <div class="filter-buttons text-center py-3">
+        <button class="btn btn-outline-dark filter-btn" data-tag="Animation">Animation</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Graphic">Graphic Design</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Game">Game</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="3D">3D</button>
+      </div>
+    </div>
+
+    <!-- Spacer (Optional, for layout purposes) -->
+    <div class="filters-spacer"></div>
+
+    <!-- Filter Buttons Group 2 -->
+    <div class="filter-buttons-group">
+      <div class="filter-buttons text-center py-3">
+        <button class="btn btn-outline-dark filter-btn" data-tag="Animation">3D</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="2D">2D</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="UI/UX">UI/UX</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Posters">Posters</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Collaterals">Collaterals</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Website">Website</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Modelling">Modelling</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Sculpting">Sculpting</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Texturing">Texturing</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Illustration">Illustration</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Animation">Animation</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Work-In-Progress">Work-In-Progress</button>
+        <button class="btn btn-outline-dark filter-btn" data-tag="Completed">Completed</button>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- ↑ SECTION-02 | END ↑ -->
+
+
+
+<!------------------------------------------------------------------------------------------------------------->
+
     
    <div class="container-fluid">
   <div class="px-lg-5">
@@ -224,24 +325,25 @@
 </div>
     <!--- ↑ SECTION-02 | GALLERY ↑ --->
         
-
-    <!-- FOOTER -->
-    <!-- Custom JS -->
-    <script src="html/src/custom.js"></script>
-    <!-- Bootstrap JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
-
-    <!--- ↓ Fliter Test ↓ --->
-
-    <div class="filter-buttons text-center py-3">
+  <div class="filter-buttons text-center py-3">
       <button class="btn btn-outline-dark filter-btn" data-tag="Animation">Animation</button>
       <button class="btn btn-outline-dark filter-btn" data-tag="Graphic">Graphic Design</button>
       <button class="btn btn-outline-dark filter-btn" data-tag="Game">Game</button>
   </div>
-  
-      <!--- ↑ Fliter Test ↑ --->
+
+<!------------------------------------------------------------------------------------------------------------->
+  <!-- FOOTER -->
+
+  <!-- Custom JS -->
+  <script src="html/src/custom.js"></script>
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+<!------------------------------------------------------------------------------------------------------------->
+
+</body>
 
 </html>
