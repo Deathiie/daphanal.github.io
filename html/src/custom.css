@@ -15,6 +15,62 @@
   font-style: normal;
 }
 
+
+/* ----------------------------------------------------------------------------------------------- */
+
+ /* Copy & Paste Behaviours */
+
+.reset-btn {
+  border: none;              /* Removes default border */
+  background: none;          /* Removes default background */
+  padding: 0;                /* Removes default padding */
+  margin: 0;                 /* Removes default margin */
+  font: inherit;             /* Ensures the button inherits font styles from parent */
+  color: inherit;            /* Ensures the button inherits text color */
+  display: flex;             /* Enables flex layout for the button's content */
+  align-items: center;       /* Vertically centers the content */
+  gap: 5px;                  /* Adds spacing between the icon and text */
+  cursor: pointer;           /* Ensures pointer cursor on hover */
+  text-decoration: none;     /* Removes underline (in case it inherits from links) */
+
+}
+
+.hover,
+.hover * {
+    cursor: none !important; /* Forces the cursor to be hidden, even on interactive elements */
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+
+
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #212653;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-cursor-dot {
+    width: 5px;
+    height: 5px;
+    background-color: #F7D148; /* Yellow dot by default */
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
 .d-none {
   display: none !important;
 }
@@ -161,7 +217,7 @@
 .catalogue {
   display: flex;
   padding-top: 15vh;
-  background-color: sandybrown;
+  background-color: #F7D148;
   position: relative; /* Required for sticky behavior within the container */
   border-radius: 50px; /* Adjust the value for the desired corner roundness */
   flex-direction: row;
@@ -184,6 +240,7 @@
   z-index: 100; /* Ensure it stays above other content */
   font-size: 80pt; /* Adjust size as needed */
   font-family: 'BabyDoll', sans-serif;
+  color: #212653;
   text-align: center;
   height: 68vh;
   padding-top: 16vh;
@@ -340,7 +397,10 @@
   gap: 15px 20px;        /* Adds 15px gap between rows and 20px gap between columns */
 }
 
+
 /* ----------------------------------------------------------------------------------------------- */
+
+
 /* Footer container */
 .footer {
   display: flex;
@@ -415,6 +475,7 @@
   width: auto; /* Adjust width if needed */
 }
 
+
 .footer .social-item {
   display: flex;
   justify-content: center; /* Centers items vertically */
@@ -472,3 +533,35 @@
   font-size: 25px;
   padding-right: 0.5vw;
 }
+
+
+/*
+.hover {
+  border: none;
+  background: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  border: 2px solid blue;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.hover:hover::after {
+  width: 5px;
+  height: 5px;
+}
+*/
