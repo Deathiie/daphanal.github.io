@@ -12,8 +12,8 @@ document.body.appendChild(cursor);
 
 // Update cursor position on mousemove
 document.addEventListener('mousemove', (e) => {
-    cursor.style.left = ${e.clientX}px;
-    cursor.style.top = ${e.clientY}px;
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
 });
 
 // Add event listeners for hover effect on elements with 'hover' class
@@ -89,8 +89,8 @@ window.addEventListener('scroll', function () {
     // Change navbar color to yellow when scroll is past the second section
     var section2 = document.getElementById('section2');
     if (section2) {
-        var section2Top = section2.offsetTop;
-        if (window.scrollY > section2Top - 50) {
+        var section2Top = section2.getBoundingClientRect().top;
+        if (section2Top <= 50) {
             navbar.classList.add('bg-warning');
             navbar.classList.remove('bg-transparent');
         } else {
@@ -109,133 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let excludeFilters = [];
 
   // Load saved filters from localStorage
-  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
-  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
-
-  if (savedFilters.length > 0) activeFilters = savedFilters;
-  if (savedExcludes.length > 0) excludeFilters = savedExcludes;
-
-  updateButtonStates();
-  filterGallery();
-
-  filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          const tag = button.getAttribute('data-tag');
-
-          if (button.classList.contains('active')) {
-              // Move to exclude state
-              button.classList.remove('active');
-              button.classList.add('exclude');
-              activeFilters = activeFilters.filter(filter => filter !== tag);
-              excludeFilters.push(tag);
-          } else if (button.classList.contains('exclude')) {
-              // Move to inactive state
-              button.classList.remove('exclude');
-              excludeFilters = excludeFilters.filter(filter => filter !== tag);
-          } else {
-              // Move to active state
-              button.classList.add('active');
-              activeFilters.push(tag);
-          }
-
-          // Save updated filters to localStorage
-          localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
-
-          filterGallery();
-      });
-  });
-
-  function updateButtonStates() {
-      filterButtons.forEach(button => {
-          const tag = button.getAttribute('data-tag');
-          if (activeFilters.includes(tag)) {
-              button.classList.add('active');
-          } else if (excludeFilters.includes(tag)) {
-              button.classList.add('exclude');
-          }
-      });
-  }
-
-  function filterGallery() {
-      items.forEach(item => {
-          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
-          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
-          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
-
-          if (excludeFilters.length > 0 && matchesExclude) {
-              item.style.display = 'none';
-          } else if (activeFilters.length === 0 || matchesActive) {
-              item.style.display = 'block';
-          } else {
-              item.style.display = 'none';
-          }
-      });
-  }
-});
-
-
-/*First click → Active (filter items).
-Second click → Exclude (hide items).
-Third click → Inactive (neutral, no effect).*/
-
-//-------------------------------------------------------------------------------------
-
-
-// Contact Number JS
-function copyPhone() {
-    const phoneNumber = '+6597695765'; // Your phone number here
-
-    // Copy to clipboard
-    navigator.clipboard.writeText(phoneNumber)
-        .then(() => {
-            alert('Phone number copied to clipboard!');
-        })
-        .catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-
-    // Open phone dialer on mobile
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-        window.location.href = tel:${phoneNumber};
-    }
-}
-
-
-// EMAIL JS
-function copyOrOpenEmail() {
-    const email = "Daphanal.s@gmail.com";
-
-    // Copy email to clipboard
-    navigator.clipboard.writeText(email).then(() => {
-        alert("Email address copied to clipboard!");
-
-        // Open the default email app after copying
-        window.location.href = mailto:${email};
-    }).catch(err => {
-        console.error("Failed to copy email: ", err);
-    });
-}
-
-
-//-------------------------------------------------------------------------------------
-
-
-// NEW TAB JS
-function openNewTab(url) {
-    window.open(url, '_blank'); // Opens the link in a new tab
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.portfolio-item');
-  let activeFilters = [];
-  let excludeFilters = [];
-
-  // Load saved filters from localStorage
-  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
-  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
+  const savedFilters = JSON.parse(localStorage.getItem('selectedTags') || '[]');
+  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags') || '[]');
 
   if (savedFilters.length > 0) activeFilters = savedFilters;
   if (savedExcludes.length > 0) excludeFilters = savedExcludes;
@@ -299,3 +174,55 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 });
+
+
+/*First click → Active (filter items).
+Second click → Exclude (hide items).
+Third click → Inactive (neutral, no effect).*/
+
+//-------------------------------------------------------------------------------------
+
+
+// Contact Number JS
+function copyPhone() {
+    const phoneNumber = '+6597695765'; // Your phone number here
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(phoneNumber)
+        .then(() => {
+            alert('Phone number copied to clipboard!');
+        })
+        .catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+
+    // Open phone dialer on mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        window.location.href = `tel:${phoneNumber}`;
+    }
+}
+
+
+// EMAIL JS
+function copyOrOpenEmail() {
+    const email = "Daphanal.s@gmail.com";
+
+    // Copy email to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+        alert("Email address copied to clipboard!");
+
+        // Open the default email app after copying
+        window.location.href = `mailto:${email}`;
+    }).catch(err => {
+        console.error("Failed to copy email: ", err);
+    });
+}
+
+
+//-------------------------------------------------------------------------------------
+
+
+// NEW TAB JS
+function openNewTab(url) {
+    window.open(url, '_blank'); // Opens the link in a new tab
+}
