@@ -1,4 +1,6 @@
-// HOVER JS
+// -------------------------------------------------------------------------------------
+// CUSTOM CURSOR JS
+
 // Create a custom cursor element
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
@@ -42,7 +44,7 @@ const videoElements = document.querySelectorAll('.invert-cursor');
 
 videoElements.forEach((video) => {
     video.addEventListener('mouseenter', () => {
-        cursor.style.backgroundColor = 'transparent';      // Fill cursor with white
+        cursor.style.backgroundColor = 'transparent';
         cursor.style.borderColor = '#FFFFFF';          // Change border to white
         cursorDot.style.backgroundColor = '#FFFFFF';   // Change dot color to white
     });
@@ -54,10 +56,7 @@ videoElements.forEach((video) => {
     });
 });
 
-
-//-------------------------------------------------------------------------------------
-
-
+// -------------------------------------------------------------------------------------
 // NAVBAR JS
 
 // Scroll Change Navbar Color
@@ -100,89 +99,85 @@ window.addEventListener('scroll', function () {
     }
 });
 
+// -------------------------------------------------------------------------------------
+// FILTER TAG JS WITH LOCALSTORAGE
 
-//-------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.portfolio-item');
-  let activeFilters = [];
-  let excludeFilters = [];
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+    let activeFilters = [];
+    let excludeFilters = [];
 
-  // Load saved filters from localStorage
-  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
-  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
+    // Load saved filters from localStorage
+    const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
+    const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
 
-  if (savedFilters.length > 0) activeFilters = savedFilters;
-  if (savedExcludes.length > 0) excludeFilters = savedExcludes;
+    if (savedFilters.length > 0) activeFilters = savedFilters;
+    if (savedExcludes.length > 0) excludeFilters = savedExcludes;
 
-  updateButtonStates();
-  filterGallery();
+    updateButtonStates(); // Initial state update
+    filterGallery();      // Initial gallery update
 
-  filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          const tag = button.getAttribute('data-tag');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tag = button.getAttribute('data-tag');
 
-          if (button.classList.contains('active')) {
-              // Move to exclude state
-              button.classList.remove('active');
-              button.classList.add('exclude');
-              activeFilters = activeFilters.filter(filter => filter !== tag);
-              excludeFilters.push(tag);
-          } else if (button.classList.contains('exclude')) {
-              // Move to inactive state
-              button.classList.remove('exclude');
-              excludeFilters = excludeFilters.filter(filter => filter !== tag);
-          } else {
-              // Move to active state
-              button.classList.add('active');
-              activeFilters.push(tag);
-          }
+            if (button.classList.contains('active')) {
+                // Move to exclude state
+                button.classList.remove('active');
+                button.classList.add('exclude');
+                activeFilters = activeFilters.filter(filter => filter !== tag);
+                excludeFilters.push(tag);
+            } else if (button.classList.contains('exclude')) {
+                // Move to inactive state
+                button.classList.remove('exclude');
+                excludeFilters = excludeFilters.filter(filter => filter !== tag);
+            } else {
+                // Move to active state
+                button.classList.add('active');
+                activeFilters.push(tag);
+            }
 
-          // Save updated filters to localStorage
-          localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
+            // Save updated filters to localStorage
+            localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
+            localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
 
-          filterGallery();
-      });
-  });
+            filterGallery();
+        });
+    });
 
-  function updateButtonStates() {
-      filterButtons.forEach(button => {
-          const tag = button.getAttribute('data-tag');
-          if (activeFilters.includes(tag)) {
-              button.classList.add('active');
-          } else if (excludeFilters.includes(tag)) {
-              button.classList.add('exclude');
-          }
-      });
-  }
+    function updateButtonStates() {
+        filterButtons.forEach(button => {
+            const tag = button.getAttribute('data-tag');
+            button.classList.remove('active', 'exclude');
+            if (activeFilters.includes(tag)) {
+                button.classList.add('active');
+            } else if (excludeFilters.includes(tag)) {
+                button.classList.add('exclude');
+            }
+        });
+    }
 
-  function filterGallery() {
-      items.forEach(item => {
-          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
-          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
-          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
+    function filterGallery() {
+        items.forEach(item => {
+            const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
+            const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
+            const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
 
-          if (excludeFilters.length > 0 && matchesExclude) {
-              item.style.display = 'none';
-          } else if (activeFilters.length === 0 || matchesActive) {
-              item.style.display = 'block';
-          } else {
-              item.style.display = 'none';
-          }
-      });
-  }
+            if (matchesExclude) {
+                item.style.display = 'none';
+            } else if (activeFilters.length === 0 || matchesActive) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
 });
 
+// -------------------------------------------------------------------------------------
+// CONTACT NUMBER JS
 
-/*First click → Active (filter items).
-Second click → Exclude (hide items).
-Third click → Inactive (neutral, no effect).*/
-
-//-------------------------------------------------------------------------------------
-
-
-// Contact Number JS
 function copyPhone() {
     const phoneNumber = '+6597695765'; // Your phone number here
 
@@ -201,8 +196,9 @@ function copyPhone() {
     }
 }
 
-
+// -------------------------------------------------------------------------------------
 // EMAIL JS
+
 function copyOrOpenEmail() {
     const email = "Daphanal.s@gmail.com";
 
@@ -217,85 +213,9 @@ function copyOrOpenEmail() {
     });
 }
 
+// -------------------------------------------------------------------------------------
+// OPEN NEW TAB JS
 
-//-------------------------------------------------------------------------------------
-
-
-// NEW TAB JS
 function openNewTab(url) {
     window.open(url, '_blank'); // Opens the link in a new tab
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.portfolio-item');
-  let activeFilters = [];
-  let excludeFilters = [];
-
-  // Load saved filters from localStorage
-  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
-  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
-
-  if (savedFilters.length > 0) activeFilters = savedFilters;
-  if (savedExcludes.length > 0) excludeFilters = savedExcludes;
-
-  updateButtonStates();
-  filterGallery();
-
-  filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          const tag = button.getAttribute('data-tag');
-
-          if (button.classList.contains('active')) {
-              // Move to exclude state
-              button.classList.remove('active');
-              button.classList.add('exclude');
-              activeFilters = activeFilters.filter(filter => filter !== tag);
-              excludeFilters.push(tag);
-          } else if (button.classList.contains('exclude')) {
-              // Move to inactive state
-              button.classList.remove('exclude');
-              excludeFilters = excludeFilters.filter(filter => filter !== tag);
-          } else {
-              // Move to active state
-              button.classList.add('active');
-              activeFilters.push(tag);
-          }
-
-          // Save updated filters to localStorage
-          localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
-
-          filterGallery();
-      });
-  });
-
-  function updateButtonStates() {
-      filterButtons.forEach(button => {
-          const tag = button.getAttribute('data-tag');
-          button.classList.remove('active', 'exclude');
-          if (activeFilters.includes(tag)) {
-              button.classList.add('active');
-          } else if (excludeFilters.includes(tag)) {
-              button.classList.add('exclude');
-          }
-      });
-  }
-
-  function filterGallery() {
-      items.forEach(item => {
-          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
-          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
-          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
-
-          if (excludeFilters.length > 0 && matchesExclude) {
-              item.style.display = 'none';
-          } else if (activeFilters.length === 0 || matchesActive) {
-              item.style.display = 'block';
-          } else {
-              item.style.display = 'none';
-          }
-      });
-  }
-});
