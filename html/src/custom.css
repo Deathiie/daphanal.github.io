@@ -315,6 +315,7 @@ body {
   display: flex;
   padding-top: 5vh;
   width: 100vw;
+  background-color: cadetblue;
 }
 
 
@@ -340,12 +341,15 @@ body {
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  background-color: #FFE05F;
 }
 
 .portfolio-content {
   width: 100%;
   height: 100%;
   position: relative; /* Enables the text to be positioned relative to this container */
+
+  background-color: whitesmoke;
 }
 
 .portfolio-item.full-row img {
@@ -354,37 +358,90 @@ body {
   object-fit: cover;
   border-radius: inherit;
   display: block;
+  
 }
 
-.full-row-text {
-  width: 40vw;
+.content {
+  z-index: 100;
+  width: 20vw;
+  height: 60vh;
   position: absolute;
-  bottom: 10px;
-  left: 20%;
+  bottom: 5vh;
+  left: 4%;
   right: 10px;
   display: flex;                /* Use flexbox to place h4 and p side by side */
   gap: 10px;                    /* Adds spacing between h4 and p */
   color: white;
   padding: 10px;
+  border-radius: 30px;
+  background-color: orchid;
+}
+
+.full-row-text {
+  display: flex; 
+  flex-direction: column;     
+  width: 20vw;
+  height: 60vh;
+
 }
 
 .full-row-text h4 {
+  flex: 1;
 font-size: 30pt;
+height: 50vh;
   color: #f0dc95;
   font-family: 'BabyDoll', sans-serif;
   word-break: break-all;
   line-height: 0.9; 
-  text-align: right;
+  text-align: center;
+  justify-content: center;
+  background-color: red;
 }
 
 .full-row-text p {
-  overflow: hidden;
-  flex: 1;                      /* Allows p to take up remaining space */
+  flex: 2;                      /* Allows p to take up remaining space */
   line-height: 1.8;
   font-family: 'sen', serif;
   font-weight: 400;
-  margin-left: 1vw;
+  background-color: aqua;
+  height: 50vh;
 }
+
+.content-tag{
+  height: 100px;
+  width: auto;
+  display: flex;      
+  flex: 1;
+  background-color: blue;
+
+  
+}
+
+.content-tag .tag {
+  background-color: #ff6347; /* Tomato background */
+  color: white;              /* White text */
+  border: 2px solid #ff6347; /* Border matching background */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.content-tag .tag:hover {
+  background-color: white;    /* Change background on hover */
+  color: #ff6347;             /* Change text color on hover */
+  border: 2px solid #ff6347;  /* Keep border consistent */
+}
+
+
+.tag{
+  display: flex;
+  gap: 10px;
+  height: 20px;
+  text-align: center;
+}
+
 
 
 .filters {
@@ -417,6 +474,7 @@ font-size: 30pt;
 
 .filter-buttons-group {
   margin-bottom: 5px; /* Adds space between button groups */
+
 }
 
 .filter-buttons {
@@ -424,7 +482,62 @@ font-size: 30pt;
   flex-wrap: wrap;       /* Allows buttons to wrap onto new rows */
   justify-content: center; /* Centers buttons horizontally */
   gap: 15px 20px;        /* Adds 15px gap between rows and 20px gap between columns */
+  border-radius: 1000px;
 }
+/* Normal button style */
+.filter-buttons .filter-btn {
+  background-color: transparent;
+  color: #212653;
+  border: 2px dotted #212653;
+  border-radius: 100px;
+  font-size: 14px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover state */
+.filter-buttons .filter-btn:hover {
+  background-color: #f7f7f7;
+  color: #212653;
+  border-color: #212653;
+}
+
+/* Active state */
+.filter-buttons .filter-btn.active {
+  background-color: #212653;
+  color: #FFE05F;
+  border: none;
+}
+
+
+/* Normal button hover state (before excluding) */
+.filter-buttons .filter-btn:hover:not(.active):not(.exclude) {
+  background-color: #f7f7f7;
+  color: #212653;
+  border-color: #212653;
+  text-decoration: 2px line-through dotted; /* Dotted line across the text */
+  text-decoration-thickness: 2px; /* Optional: Adjust line thickness */
+}
+
+/* Exclude state */
+.filter-buttons .filter-btn.exclude {
+  background-color: transparent;
+  color: #ff3b3b;
+  border: 2px dashed #ff3b3b;
+  opacity: 0.8;
+  text-decoration: 2px line-through solid;
+}
+
+/* Exclude state hover */
+.filter-buttons .filter-btn.exclude:hover {
+  background-color: #ffe6e6;
+  color: #ff1f1f;
+  border-color: #ff1f1f; /* Dotted line through text */
+}
+
+
+
 
 
 /* ----------------------------------------------------------------------------------------------- */

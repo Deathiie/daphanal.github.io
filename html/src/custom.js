@@ -102,85 +102,82 @@ window.addEventListener('scroll', function () {
 
 
 //-------------------------------------------------------------------------------------
-
-
-// Filter Tag JS with LocalStorage
-// Annotated change: Added localStorage functionality to remember selected tags
-// and retrieve them when the page is reloaded or revisited.
 document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.portfolio-item');
-    let activeFilters = [];
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+  let activeFilters = [];
+  let excludeFilters = [];
 
-    // Check URL for initial tag query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialTag = urlParams.get('tag');
+  // Load saved filters from localStorage
+  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
+  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
 
-    if (initialTag) {
-        // Clear localStorage filters if a tag is provided via URL
-        localStorage.removeItem('selectedTags');
+  if (savedFilters.length > 0) activeFilters = savedFilters;
+  if (savedExcludes.length > 0) excludeFilters = savedExcludes;
 
-        // Remove 'active' class from all buttons
-        filterButtons.forEach(button => button.classList.remove('active'));
+  updateButtonStates();
+  filterGallery();
 
-        // Simulate a click on the corresponding filter button
-        const initialButton = Array.from(filterButtons).find(button => button.getAttribute('data-tag') === initialTag);
-        if (initialButton) {
-            initialButton.classList.add('active');
-            activeFilters.push(initialTag);
-            filterGallery(activeFilters);
-        }
-    } else {
-        // Load previously selected tags from localStorage if no URL tag is present
-        const savedFilters = JSON.parse(localStorage.getItem('selectedTags'));
-        if (savedFilters && savedFilters.length > 0) {
-            activeFilters = savedFilters;
-            filterButtons.forEach(button => {
-                const tag = button.getAttribute('data-tag');
-                if (activeFilters.includes(tag)) {
-                    button.classList.add('active');
-                }
-            });
-            filterGallery(activeFilters);
-        }
-    }
+  filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          const tag = button.getAttribute('data-tag');
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tag = button.getAttribute('data-tag');
+          if (button.classList.contains('active')) {
+              // Move to exclude state
+              button.classList.remove('active');
+              button.classList.add('exclude');
+              activeFilters = activeFilters.filter(filter => filter !== tag);
+              excludeFilters.push(tag);
+          } else if (button.classList.contains('exclude')) {
+              // Move to inactive state
+              button.classList.remove('exclude');
+              excludeFilters = excludeFilters.filter(filter => filter !== tag);
+          } else {
+              // Move to active state
+              button.classList.add('active');
+              activeFilters.push(tag);
+          }
 
-            // Toggle the active state of the button and update activeFilters
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-                activeFilters = activeFilters.filter(filter => filter !== tag);
-            } else {
-                button.classList.add('active');
-                activeFilters.push(tag);
-            }
+          // Save updated filters to localStorage
+          localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
+          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
 
-            // Save the updated filters to localStorage
-            localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
+          filterGallery();
+      });
+  });
 
-            // Update the gallery based on active filters
-            filterGallery(activeFilters);
-        });
-    });
+  function updateButtonStates() {
+      filterButtons.forEach(button => {
+          const tag = button.getAttribute('data-tag');
+          if (activeFilters.includes(tag)) {
+              button.classList.add('active');
+          } else if (excludeFilters.includes(tag)) {
+              button.classList.add('exclude');
+          }
+      });
+  }
 
-    function filterGallery(filters) {
-        items.forEach(item => {
-            const itemTags = item.getAttribute('data-tag').split(/[\s,]+/); // Split by space or comma
-            const matches = filters.some(filter => itemTags.includes(filter));
+  function filterGallery() {
+      items.forEach(item => {
+          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
+          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
+          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
 
-            // Show the item if it matches any active filter or if no filters are selected
-            if (filters.length === 0 || matches) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
+          if (excludeFilters.length > 0 && matchesExclude) {
+              item.style.display = 'none';
+          } else if (activeFilters.length === 0 || matchesActive) {
+              item.style.display = 'block';
+          } else {
+              item.style.display = 'none';
+          }
+      });
+  }
 });
 
+
+/*First click → Active (filter items).
+Second click → Exclude (hide items).
+Third click → Inactive (neutral, no effect).*/
 
 //-------------------------------------------------------------------------------------
 
@@ -228,3 +225,77 @@ function copyOrOpenEmail() {
 function openNewTab(url) {
     window.open(url, '_blank'); // Opens the link in a new tab
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+  let activeFilters = [];
+  let excludeFilters = [];
+
+  // Load saved filters from localStorage
+  const savedFilters = JSON.parse(localStorage.getItem('selectedTags')) || [];
+  const savedExcludes = JSON.parse(localStorage.getItem('excludedTags')) || [];
+
+  if (savedFilters.length > 0) activeFilters = savedFilters;
+  if (savedExcludes.length > 0) excludeFilters = savedExcludes;
+
+  updateButtonStates();
+  filterGallery();
+
+  filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          const tag = button.getAttribute('data-tag');
+
+          if (button.classList.contains('active')) {
+              // Move to exclude state
+              button.classList.remove('active');
+              button.classList.add('exclude');
+              activeFilters = activeFilters.filter(filter => filter !== tag);
+              excludeFilters.push(tag);
+          } else if (button.classList.contains('exclude')) {
+              // Move to inactive state
+              button.classList.remove('exclude');
+              excludeFilters = excludeFilters.filter(filter => filter !== tag);
+          } else {
+              // Move to active state
+              button.classList.add('active');
+              activeFilters.push(tag);
+          }
+
+          // Save updated filters to localStorage
+          localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
+          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
+
+          filterGallery();
+      });
+  });
+
+  function updateButtonStates() {
+      filterButtons.forEach(button => {
+          const tag = button.getAttribute('data-tag');
+          button.classList.remove('active', 'exclude');
+          if (activeFilters.includes(tag)) {
+              button.classList.add('active');
+          } else if (excludeFilters.includes(tag)) {
+              button.classList.add('exclude');
+          }
+      });
+  }
+
+  function filterGallery() {
+      items.forEach(item => {
+          const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
+          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
+          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
+
+          if (excludeFilters.length > 0 && matchesExclude) {
+              item.style.display = 'none';
+          } else if (activeFilters.length === 0 || matchesActive) {
+              item.style.display = 'block';
+          } else {
+              item.style.display = 'none';
+          }
+      });
+  }
+});
