@@ -46,16 +46,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="hover nav-item mx-3">
-            <a class="nav-link" href="works.html?tag=Game">Game</a>
+            <a class="nav-link" href="works.html?tag=game">Game</a>
           </li>
           <li class="hover nav-item mx-3">
-            <a class="nav-link" href="works.html?tag=Animation">Animation</a>
+            <a class="nav-link" href="works.html?tag=animation">Animation</a>
           </li>
           <li class="hover nav-item mx-3">
-            <a class="nav-link" href="works.html?tag=Graphic">Graphic Design</a>
+            <a class="nav-link" href="works.html?tag=graphic">Graphic Design</a>
           </li>
           <li class="hover nav-item mx-3">
-            <a class="nav-link" href="works.html?tag=3D">3D</a>
+            <a class="nav-link" href="works.html?tag=3d">3D</a>
           </li>
           <li class="nav-item mx-3">
           </li>
@@ -118,17 +118,29 @@
 <!-- ROW 1: [Project Name] -->
 <!--------------------------->
 
-<div class="hover portfolio-item full-row" data-tag="Game" onclick="openNewTab('https://www.behance.net/gallery/216646527/TEST')">
+<div class="hover portfolio-item full-row" data-tag="game">
   <div class="portfolio-content">
+    <a href="html/src/2025 resume.pdf" target="_blank">
       <img src="html/src/gifs/ezgif-2-614d5dfac7.gif" alt="Project 1" class="img-fluid">
-    <span class="full-row-text">
+      <a>
+      <div class="content">
+      <div class="full-row-text">
     <h4>Texture <br> Design</h4>
     <p>  Pxah hbdwuioedhpnwnoe ednwdnwqlkedmed Publication made for class blah blah 
           hbdwuioedhpnwnoe ednwdnwqlkedmed Publication made for class blah blah
           noe ednwdnwqlkedmed Publdnwqlkedmed </p>
-    </span>
+
+          <div class="content-tag">
+            <button class="tag hover" data-tag="game">#Game</button>
+            <button class="tag hover" data-tag="illustration">#Website</button>
+          </div>
+
+        </div>
+      </div>
   </div>
+
 </div>
+
 
 <!--------------------------->
 <!-- ROW 2: [Project Name] -->
@@ -214,10 +226,10 @@
     <!-- Filter Buttons Group 1 -->
     <div class="filter-buttons-group">
       <div class="filter-buttons text-center py-3">
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Animation">Animation</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Graphic">Graphic Design</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Game">Game</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="3D">3D</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="3d">3D</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="game">Game</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="animation">Animation</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="graphic">Graphic Design</button>
       </div>
     </div>
 
@@ -226,20 +238,17 @@
     <!-- Filter Buttons Group 2 -->
     <div class="filter-buttons-group">
       <div class="filter-buttons text-center py-3">
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="2D">2D</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="UI/UX">UI/UX</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Posters">Posters</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Collaterals">Collaterals</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Website">Website</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Modelling">Modelling</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Sculpting">Sculpting</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Texturing">Texturing</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Illustration">Illustration</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Animation">Animation</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Rigging">Rigging</button>
-        <button class="hover btn btn-outline-dark filter-btn" data-tag="Work-In-Progress">Work-In-Progress</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="vector">Vector</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="illustration">Illustration</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="tweening">2D</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="uiux">UI/UX</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="collaterals">Collaterals</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="rigging">Rigging</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="modelling">Modelling</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="sculpting">Sculpting</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="texturing">Texturing</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="rigging">Rigging</button>
+        <button class="hover btn btn-outline-dark filter-btn" data-tag="personal">Personal</button>
         <button class="hover btn btn-outline-dark clear-btn " id="clear-filters">clear</button>
       </div>
     </div>
@@ -265,14 +274,13 @@
       <div class="works">WORKS:</div>
     </div>
     <div class="categories">
-      <a href="works.html?tag=Game" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=Animation" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=Graphic" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=3D" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=game" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=animation" class="category" style="background-image: url('html/src/gifs/anim-card.gif');"></a>
+      <a href="works.html?tag=graphic" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=3d" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
     </div>
   </section>
-  </section>
-  
+</section>
   
   <!--- ↑ SECTION 4 | END ↑ --->
 
