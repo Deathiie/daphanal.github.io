@@ -172,6 +172,7 @@ body {
 .btn {
   font-size: 13px;
   color: antiquewhite;
+  z-index: 100000;
 } 
 
 
