@@ -213,8 +213,7 @@ body {
 /* ----------------------------------------------------------------------------------------------- */
 
 
-.section3 {
-  border: 1px dashed red; /* Debug border */
+.aboutme {
   background-color: whitesmoke;
   width: 100%;
   min-height: 80vh; /* Adjustable height */
@@ -224,6 +223,7 @@ body {
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   text-align: center; /* Ensures text is centered */
+   padding: 5vh 16vw;
 }
 
 
@@ -352,7 +352,7 @@ body {
   object-fit: cover;
   border-radius: inherit;
   display: block;
-  background-color: hotpink;
+  background-color: #F7D148;
   
 }
 
@@ -383,7 +383,7 @@ body {
 
 .full-row-text h4 {
   font-size: 25pt;
-  color: #F7D148;
+  color: #f9c909;
   font-family: 'BabyDoll', sans-serif;
   line-height: 0.9; 
   text-align:center;

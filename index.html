@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
+  <title>About Me</title>
+  <link rel="icon" href="html/src/imgs/icon.png" >
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="html/src/custom.css">
@@ -21,49 +22,49 @@
 <body id="index">
 
 
-   <!--- ↓ NAVBAR | START ↓ --->
+    <!--- ↓ NAVBAR | START ↓ --->
 
-   <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="navbar">
-    <div class="container-fluid">
-
-      <!-- Logo -->
-      <a class="hover navbar-brand" href="#">
-        <img src="html/src/imgs/icon.png" alt="Logo">
-      </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" id="navbar">
+      <div class="container-fluid">
   
-      <!-- Navbar Toggler (replace default hamburger icon with custom PNG) -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="html/src/imgs/hamburger-icon.png" alt="Menu" style="width: 30px; height: auto;">
-      </button>
+        <!-- Logo -->
+        <a class="hover navbar-brand" href="index.html">
+          <img src="html/src/imgs/icon.png" alt="Logo">
+        </a>
+    
+        <!-- Navbar Toggler (replace default hamburger icon with custom PNG) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="html/src/imgs/hamburger-icon.png" alt="Menu" style="width: 30px; height: auto;">
+        </button>
+    
+        <!-- Navbar Collapse (contains mobile menu and resume button) -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="hover nav-item mx-3">
+              <a class="nav-link" href="works.html?tag=game">Game</a>
+            </li>
+            <li class="hover nav-item mx-3">
+              <a class="nav-link" href="works.html?tag=animation">Animation</a>
+            </li>
+            <li class="hover nav-item mx-3">
+              <a class="nav-link" href="works.html?tag=graphic">Graphic Design</a>
+            </li>
+            <li class="hover nav-item mx-3">
+              <a class="nav-link" href="works.html?tag=3d">3D</a>
+            </li>
+            <li class="nav-item mx-3">
+            </li>
+          </ul>
+          <button class="btn btn-outline-light resume-button d-none d-lg-block" type="button">Resume</button>
+          <!-- Resume Button (inside expanded menu for mobile view) -->
+          <button class="btn btn-outline-light resume-button d-lg-none mt-3 mx-auto" type="button">Resume</button>
+        </div>
   
-      <!-- Navbar Collapse (contains mobile menu and resume button) -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item mx-3">
-            <a class="hover nav-link" href="works.html?tag=game">Game</a>
-          </li>
-          <li class="nav-item mx-3">
-            <a class="hover nav-link" href="works.html?tag=animation">Animation</a>
-          </li>
-          <li class="nav-item mx-3">
-            <a class="hover nav-link" href="works.html?tag=graphic">Graphic Design</a>
-          </li>
-          <li class="nav-item mx-3">
-            <a class="hover nav-link" href="works.html?tag=3d">3D</a>
-          </li>
-          <li class="nav-item mx-3">
-          </li>
-        </ul>
-        <button class="btn btn-outline-light resume-button d-none d-lg-block" type="button">Resume</button>
-        <!-- Resume Button (inside expanded menu for mobile view) -->
-        <button class="btn btn-outline-light resume-button d-lg-none mt-3 mx-auto" type="button">Resume</button>
       </div>
-
-    </div>
-  </nav>
-  
-  <!--- ↑ NAVBAR | END ↑ --->
+    </nav>
+    
+    <!--- ↑ NAVBAR | END ↑ --->
 
 
 <!------------------------------------------------------------------------------------------------------------->
@@ -103,8 +104,8 @@
   <!--- ↓ SECTION 3 | START ↓ --->
   
   <!-- For Resume -->
-  <section class="section3" id="Resume">
-  Add items here!!!
+  <section class="aboutme" id="aboutme">
+    <img src="html/src/imgs/temp_about-me.png" alt="About Me" class="img-fluid">
   </section>
 
   <!--- ↑ SECTION 3 | END ↑ --->
@@ -113,7 +114,7 @@
 <!------------------------------------------------------------------------------------------------------------->
 
 
-  <!--- ↓ SECTION 4 | START ↓ --->
+ <!--- ↓ SECTION 4 | START ↓ --->
   
   
   <!-- Catalogue -->
@@ -122,109 +123,112 @@
       <div class="works">WORKS:</div>
     </div>
     <div class="categories">
-      <a href="works.html?tag=Game" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=Animation" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=Graphic" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
-      <a href="works.html?tag=3D-Production" class="category" style="background-image: url('html/src/imgs/anim-card.png');"></a>
+      <a href="works.html?tag=game" class="category" style="background-image: url('html/src/gifs/game-card.gif');"></a>
+      <a href="works.html?tag=animation" class="category" style="background-image: url('html/src/gifs/anim-card.gif');"></a>
+      <a href="works.html?tag=graphic" class="category" style="background-image: url('html/src/gifs/gd-card.gif');"></a>
+      <a href="works.html?tag=3d" class="category" style="background-image: url('html/src/gifs/3d-card.gif');"></a>
     </div>
   </section>
+</section>
   
   <!--- ↑ SECTION 4 | END ↑ --->
-  
-
-<!------------------------------------------------------------------------------------------------------------->
 
 
-   <!--- ↓ SECTION 5 | FOOTER ↓ --->
+  <!------------------------------------------------------------------------------------------------------------->
 
 
-   <div class="footer">
-    <div class="footer-top">
-      <div class="footer-left">
+    <!--- ↓ SECTION 5 | FOOTER ↓ --->
 
-        <!-- Hero Image -->
-      <a href="index.html">
-        <div class="hover footer-logo">
-            <img src="html/src/imgs/Logo_Rendered.png" alt="Contacts" class="contacts-gif">
-        </div>
-      </a>
 
-      </div>
+    <div class="footer">
+      <div class="footer-top">
+        <div class="footer-left">
 
-      <div class="footer-right">
-        <div class="footer-contacts">
-
-           <!-- Email -->
-
-           <button id="customBTN copyEmailBtn" onclick="copyOrOpenEmail()" class="reset-btn hover contact-item">
-            <img src="html/src/imgs/email.png" alt="Email" class="icon-contact">
-            Daphanal.s@gmail.com
-            <img src="html/src/imgs/Arrow.png" alt="Go" class="contact-go">
-          </button>
-
-          <div class="dotted-separator" ></div>
-
-           <!-- Phone Number -->
-            
-           <button id="customBTN copyPhoneBtn" onclick="copyPhone()" class="reset-btn hover contact-item">
-            <img src="html/src/imgs/hp.png" alt="Hp No." class="icon-contact">
-            +65 9769 5765
-            <img src="html/src/imgs/Arrow.png" alt="Go" class="contact-go">
-          </button>
-
-          <div class="dotted-separator"></div>
-
-          <!-- Resume -->
-            
-          <a href="html/src/2025 resume.pdf" target="_blank" class="reset-btn hover contact-item">
-            <img src="html/src/imgs/view.png" alt="Resume" class="icon-contact">
-            [View Resume]
-            <img src="html/src/imgs/Download.png" alt="Go" class="contact-go">
-          </a>
-          
-          <div class="dotted-separator"></div>
-
-             <!-- Social Medias -->
-              
-          <div class="social-item">
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/daphanal/" target="_blank">
-              <img src="html/src/imgs/Instagram.png" alt="Instagram" class="reset-btn hover icon icon-social">
-            </a>
-            <!-- Behance -->
-            <a href="https://www.behance.net/daphanal" target="_blank">
-              <img src="html/src/imgs/Behance.png" alt="Behance" class="reset-btn hover icon icon-social">
-            </a>
-            <!-- Linkedin -->
-            <a href="https://www.linkedin.com/in/daphanal-soh-a70a60169/" target="_blank">
-              <img src="html/src/imgs/Linkedin.png" alt="LinkedIn" class="reset-btn hover icon icon-social">
-            </a>
-
-            @ Daphanal
-
+          <!-- Hero Image -->
+        <a href="index.html">
+          <div class="hover footer-logo">
+              <img src="html/src/imgs/Logo_Rendered.png" alt="Contacts" class="contacts-gif">
           </div>
+        </a>
+
         </div>
 
+        <div class="footer-right">
+          <div class="footer-contacts">
+
+             <!-- Email -->
+
+             <button id="customBTN copyEmailBtn" onclick="copyOrOpenEmail()" class="reset-btn hover contact-item">
+              <img src="html/src/imgs/email.png" alt="Email" class="icon-contact">
+              Daphanal.s@gmail.com
+              <img src="html/src/imgs/Arrow.png" alt="Go" class="contact-go">
+            </button>
+
+            <div class="dotted-separator" ></div>
+
+             <!-- Phone Number -->
+              
+             <button id="customBTN copyPhoneBtn" onclick="copyPhone()" class="reset-btn hover contact-item">
+              <img src="html/src/imgs/hp.png" alt="Hp No." class="icon-contact">
+              +65 9769 5765
+              <img src="html/src/imgs/Arrow.png" alt="Go" class="contact-go">
+            </button>
+
+            <div class="dotted-separator"></div>
+
+       <!-- Resume -->
+            
+       <a href="html/src/2025 resume.pdf" target="_blank" class="reset-btn hover contact-item">
+        <img src="html/src/imgs/view.png" alt="Resume" class="icon-contact">
+        [View Resume]
+        <img src="html/src/imgs/Download.png" alt="Go" class="contact-go">
+      </a>
+      
+      <div class="dotted-separator"></div>
+
+         <!-- Social Medias -->
+                
+            <div class="social-item">
+
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/daphanal/" target="_blank">
+                <img src="html/src/imgs/Instagram.png" alt="Instagram" class="reset-btn hover icon icon-social">
+              </a>
+              <!-- Behance -->
+              <a href="https://www.behance.net/daphanal" target="_blank">
+                <img src="html/src/imgs/Behance.png" alt="Behance" class="reset-btn hover icon icon-social">
+              </a>
+              <!-- Linkedin -->
+              <a href="https://www.linkedin.com/in/daphanal-soh-a70a60169/" target="_blank">
+                <img src="html/src/imgs/Linkedin.png" alt="LinkedIn" class="reset-btn hover icon icon-social">
+              </a>
+
+              @ Daphanal
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+         <!-- Fineprints -->
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-item">2025 Daphanal. All rights reserved.</div>
+        <div class="footer-bottom-item">
+          <span id="autography-font">The making of</span>
+          <img src="html/src/imgs/icon.png" alt="Daph's" class="icon-making">
+        </div>
+        <div class="footer-bottom-item">Powered by Github</div>
       </div>
     </div>
+    
 
-       <!-- Fineprints -->
+  <!--- ↑ SECTION 5 | END ↑ --->
 
-    <div class="footer-bottom">
-      <div class="footer-bottom-item">2025 Daphanal. All rights reserved.</div>
-      <div class="footer-bottom-item">
-        <span id="autography-font">The making of</span>
-        <img src="html/src/imgs/icon.png" alt="Daph's" class="icon-making">
-      </div>
-      <div class="footer-bottom-item">Powered by Github</div>
-    </div>
-  </div>
-  
-
-<!--- ↑ SECTION 5 | END ↑ --->
 
 <!------------------------------------------------------------------------------------------------------------->
+  <!-- FOOTER -->
 
   <!-- Custom JS -->
   <script src="html/src/custom.js"></script>
@@ -239,3 +243,4 @@
 </body>
 
 </html>
+
