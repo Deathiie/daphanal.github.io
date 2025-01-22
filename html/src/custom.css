@@ -388,7 +388,7 @@ body {
   font-family: 'BabyDoll', sans-serif;
   line-height: 0.9; 
   text-align:center;
-  padding-top: 1vh;
+  padding-top: 3vh;
 
  margin-bottom: -0.5vw;
 }
@@ -416,7 +416,7 @@ display: flex;
 .side-by-side .left{
   display: flex;
   flex: 1;
-  padding-right: 3vw;
+  padding-right: 2vw;
 }
 
 .side-by-side .right{
@@ -426,27 +426,25 @@ display: flex;
 
 
 .side-by-side-content {
-  z-index: 100;
-  width: 26vw;
-  height: 10vh;
+  width: inherit;
+  height: 15vh;
   position: absolute;
-  bottom: 5vh;
-  left: 4%;
+  bottom: 0%;
+  left: 0%;
   right: 10px;
   display: flex;                /* Use flexbox to place h4 and p side by side */
   gap: 10px;                    /* Adds spacing between h4 and p */
-  color: white;
-  padding: 10px;
+  color: rgba(255, 255, 255, 0.855);
   border-radius: 30px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.912);
   
 }
 
 .side-by-side-text {
   display: flex; 
   flex-direction: column;     
-  width: 20vw;
-  height: 60vh;
+  width: inherit;
+  height: inherit;
 
   justify-content: center;  /* Center horizontally */
   align-items: center;  /* Center vertically */
@@ -456,16 +454,15 @@ display: flex;
 .side-by-side-text h4 {
   flex: 0.5;
   font-size: 30pt;
-  color: #f0dc95;
+  color: #f9c909;
   font-family: 'BabyDoll', sans-serif;
   line-height: 0.9; 
   text-align:center;
-  padding-top: 5vh;
+  padding-top: 3vh;
 }
 
 .side-by-side-text p {
 
-  padding-left: 5vh;
   flex: 2;  /* Allows <p> to take up remaining space */
   line-height: 1.3;
   font-family: 'Sen', serif;
