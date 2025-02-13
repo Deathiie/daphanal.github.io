@@ -102,30 +102,23 @@ window.addEventListener('scroll', function () {
 
 
 //-------------------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const items = document.querySelectorAll('.portfolio-item');
   let activeFilters = [];
-  let excludeFilters = [];
 
   // Check for 'tag' in URL query parameters
   const urlParams = new URLSearchParams(window.location.search);
   const initialTag = urlParams.get('tag');
-  const isNavbarClick = !!initialTag; // Detect if this load is from a navbar click
+  const isNavbarClick = !!initialTag;
 
   if (isNavbarClick) {
-      // Clear stored filters and set the tag from the navbar link as the only active filter
       activeFilters = [initialTag];
-      excludeFilters = [];
       localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-      localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
   } else {
-      // Load saved filters from localStorage if not coming from a navbar link
       const savedFilters = JSON.parse(localStorage.getItem('selectedTags') || '[]');
-      const savedExcludes = JSON.parse(localStorage.getItem('excludedTags') || '[]');
-
       if (savedFilters.length > 0) activeFilters = savedFilters;
-      if (savedExcludes.length > 0) excludeFilters = savedExcludes;
   }
 
   updateButtonStates();
@@ -136,52 +129,42 @@ document.addEventListener('DOMContentLoaded', () => {
           const tag = button.getAttribute('data-tag');
 
           if (button.classList.contains('active')) {
-              // Move to exclude state
               button.classList.remove('active');
-              button.classList.add('exclude');
-              activeFilters = activeFilters.filter(filter => filter !== tag);
-              excludeFilters.push(tag);
-          } else if (button.classList.contains('exclude')) {
-              // Move to inactive state
-              button.classList.remove('exclude');
-              excludeFilters = excludeFilters.filter(filter => filter !== tag);
+              
+              activeFilters = activeFilters.filter(filter => filter !== tag); // [MULTIPLE] 
+              //[SINGLE] activeFilters = [];
           } else {
-              // Move to active state
-              button.classList.add('active');
-              activeFilters.push(tag);
+
+              //[SINGLE] filterButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active'); // [MULTPLE & SINGLE]
+
+              //[SINGLE] activeFilters = [tag]; 
+              activeFilters.push(tag); // [MULTIPLE] 
+              
           }
 
-          // Save updated filters to localStorage
           localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-          localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
-
           filterGallery();
       });
   });
 
-  // Function to update button states based on filters
   function updateButtonStates() {
       filterButtons.forEach(button => {
           const tag = button.getAttribute('data-tag');
-          button.classList.remove('active', 'exclude');
           if (activeFilters.includes(tag)) {
               button.classList.add('active');
-          } else if (excludeFilters.includes(tag)) {
-              button.classList.add('exclude');
+          } else {
+              button.classList.remove('active');
           }
       });
   }
 
-  // Function to filter the gallery items based on active and exclude filters
   function filterGallery() {
       items.forEach(item => {
           const itemTags = item.getAttribute('data-tag').split(/[\s,]+/);
-          const matchesActive = activeFilters.some(filter => itemTags.includes(filter));
-          const matchesExclude = excludeFilters.some(filter => itemTags.includes(filter));
+          const matchesAllActive = activeFilters.every(filter => itemTags.includes(filter));
 
-          if (excludeFilters.length > 0 && matchesExclude) {
-              item.style.display = 'none';
-          } else if (activeFilters.length === 0 || matchesActive) {
+          if (activeFilters.length === 0 || matchesAllActive) {
               item.style.display = 'block';
           } else {
               item.style.display = 'none';
@@ -189,24 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Clear Filters Button
   document.getElementById('clear-filters').addEventListener('click', () => {
-      // Clear active and exclude filters
       activeFilters = [];
-      excludeFilters = [];
-
-      // Remove active and exclude classes from all filter buttons
-      filterButtons.forEach(button => button.classList.remove('active', 'exclude'));
-
-      // Save cleared filters to localStorage
+      filterButtons.forEach(button => button.classList.remove('active'));
       localStorage.setItem('selectedTags', JSON.stringify(activeFilters));
-      localStorage.setItem('excludedTags', JSON.stringify(excludeFilters));
-
-      // Refresh the gallery
       filterGallery();
   });
 });
 
+  
 
 /*First click → Active (filter items).
 Second click → Exclude (hide items).

@@ -368,7 +368,7 @@ body {
   color: white;
   padding: 10px;
   border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.91);
 }
 
 .full-row-text {
@@ -539,7 +539,7 @@ display: flex;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  color: #333;
+  color: #212653;
   margin-bottom: 20px;
 }
 
@@ -562,7 +562,6 @@ display: flex;
   border: 2px dotted #212653;
   border-radius: 100px;
   font-size: 14px;
-  cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -581,29 +580,26 @@ display: flex;
 }
 
 
-/* Normal button hover state (before excluding) */
-.filter-buttons .filter-btn:hover:not(.active):not(.exclude) {
-  background-color: #f7f7f7;
-  color: #212653;
-  border-color: #212653;
-  text-decoration: 2px line-through dotted; /* Dotted line across the text */
-  text-decoration-thickness: 2px; /* Optional: Adjust line thickness */
-}
-
-/* Exclude state */
-.filter-buttons .filter-btn.exclude {
-  background-color: transparent;
-  color: #ff3b3b;
-  border: 2px dashed #ff3b3b;
-  opacity: 0.8;
-  text-decoration: 2px line-through solid;
-}
 
 /* Exclude state hover */
 .filter-buttons .filter-btn.exclude:hover {
   background-color: #ffe6e6;
   color: #ff1f1f;
   border-color: #ff1f1f; /* Dotted line through text */
+}
+
+.filter-buttons .clear-btn
+{
+  border-radius: 1000px;
+  border-color: #212653;
+  color: #212653;
+}
+
+.filter-buttons .clear-btn:hover
+{
+  background-color: #212653;
+  color: #FFE05F;
+  border-color: #212653;
 }
 
 
